@@ -497,7 +497,7 @@ class BezierChartState extends State<BezierChart>
       for (BezierLine line in widget.series) {
         Map<String, List<double>> tmpMap = Map();
         for (DataPoint<DateTime> dataPoint
-            in line.data as Iterable<DataPoint<DateTime>>) {
+            in line.data!.cast<DataPoint<DateTime>>()) {
           String key;
           if (_currentBezierChartScale == BezierChartScale.MONTHLY) {
             key =
