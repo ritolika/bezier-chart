@@ -10,6 +10,8 @@ class BezierLine {
   ///Color for the dot fill on each data point
   final Color dataPointFillColor;
 
+  final Color selectedDataPointFillColor;
+
   ///Color for the dot stroke on each data point
   final Color dataPointStrokeColor;
 
@@ -33,9 +35,12 @@ class BezierLine {
     this.onMissingValue,
     Color? dataPointFillColor,
     Color? dataPointStrokeColor,
+    Color? selectedDataPointFillColor,
     this.data,
   })  : this.dataPointFillColor = dataPointFillColor ?? lineColor,
-        this.dataPointStrokeColor = dataPointStrokeColor ?? lineColor;
+        this.dataPointStrokeColor = dataPointStrokeColor ?? lineColor,
+        this.selectedDataPointFillColor =
+            selectedDataPointFillColor ?? dataPointFillColor ?? lineColor;
 
   factory BezierLine.copy({required BezierLine bezierLine}) {
     return BezierLine(

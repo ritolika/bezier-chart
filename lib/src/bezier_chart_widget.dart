@@ -1367,7 +1367,16 @@ class _BezierChartPainter extends CustomPainter {
           centerForCircle,
           radiusDotIndicatorMain,
           Paint()
-            ..color = series!.reversed.toList().last.dataPointFillColor
+            ..color = series!.reversed.toList().last.selectedDataPointFillColor
+            ..strokeWidth = 4.0,
+        );
+
+        canvas.drawCircle(
+          centerForCircle,
+          radiusDotIndicatorMain,
+          Paint()
+            ..color = series!.reversed.toList().last.lineColor
+            ..style = PaintingStyle.stroke
             ..strokeWidth = 4.0,
         );
 
@@ -1438,7 +1447,10 @@ class _BezierChartPainter extends CustomPainter {
               center.dy - offsetInfo - infoHeight / 3);
           //path.close();
           // canvas.drawShadow(path, Colors.black, 20.0, false);
-          canvas.drawPath(path, paintControlPoints..color = Colors.black12);
+          canvas.drawPath(
+            path,
+            paintControlPoints..color = Colors.black12,
+          );
         }
 
         final paintInfo = Paint()
@@ -1509,13 +1521,14 @@ class _BezierChartPainter extends CustomPainter {
                 Paint()
                   ..color = customValue.color
                   ..style = PaintingStyle.fill);
-            canvas.drawCircle(
+            /*canvas.drawCircle(
                 fixedCenter,
                 radiusDotIndicatorItems,
                 Paint()
-                  ..color = Colors.black
-                  ..strokeWidth = 0.5
-                  ..style = PaintingStyle.stroke);
+                  ..color =
+                      config!.bubbleIndicatorValueStyle.color ?? config!.bubbleIndicatorColor
+                  ..strokeWidth = 1
+                  ..style = PaintingStyle.stroke);*/
           }
         }
       }
